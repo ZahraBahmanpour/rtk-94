@@ -1,12 +1,19 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { openModal } from "../modal/modalSlice";
+import { useDeletePostMutation } from "./postSlice-query";
+// import { openModal } from "../modal/modalSlice";
 
 const PostItem = ({ id, title, body, date }) => {
   const dispatch = useDispatch();
-  const handleDeletePost = (e) => {
+  const [deletePost] = useDeletePostMutation();
+  const handleDeletePost = async (e) => {
     e.preventDefault();
-    dispatch(openModal());
+    // dispatch(openModal());
+    try {
+      await deletePost({ id });
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   return (

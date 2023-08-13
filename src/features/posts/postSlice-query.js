@@ -10,7 +10,14 @@ const postsApiSlice = apiSlice.injectEndpoints({
         });
       },
     }),
+    deletePost: builder.mutation({
+      query: ({ id }) => ({
+        url: `/posts/${id}`,
+        method: "DELETE",
+        body: { id },
+      }),
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = postsApiSlice;
+export const { useGetPostsQuery, useDeletePostMutation } = postsApiSlice;
