@@ -11,6 +11,10 @@ const postsApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: ["Post"],
     }),
+    getPost: builder.query({
+      query: (id) => `/posts/${id}`,
+      providesTags: ["Post"],
+    }),
     deletePost: builder.mutation({
       query: ({ id }) => ({
         url: `/posts/${id}`,
@@ -22,4 +26,5 @@ const postsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetPostsQuery, useDeletePostMutation } = postsApiSlice;
+export const { useGetPostsQuery, useDeletePostMutation, useGetPostQuery } =
+  postsApiSlice;

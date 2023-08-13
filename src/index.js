@@ -7,6 +7,7 @@ import Layout from "./layouts/Layout";
 import { Provider } from "react-redux";
 import store from "./app/store";
 import PostList from "./features/posts/postList";
+import PostEdit from "./features/posts/postEdit";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/post",
         element: <div>Post new</div>,
+      },
+      {
+        path: "/posts/:postId",
+        element: <PostEdit />,
       },
     ],
   },
