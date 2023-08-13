@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./app/store";
 import PostList from "./features/posts/postList";
 import PostEdit from "./features/posts/postEdit";
+import RequireAuth from "./features/auth/requireAuth";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <PostList />,
+        element: <RequireAuth />,
       },
       {
         path: "/post",

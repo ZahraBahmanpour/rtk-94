@@ -1,4 +1,5 @@
 import apiSlice from "../features/apiSlice";
+import authSlice from "../features/auth/authSlice";
 import modalSlice from "../features/modal/modalSlice";
 // import postsSlice from "../features/posts/postSlice";
 
@@ -9,6 +10,7 @@ const store = configureStore({
     // posts: postsSlice,
     [apiSlice.reducerPath]: apiSlice.reducer,
     modal: modalSlice,
+    auth: authSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
