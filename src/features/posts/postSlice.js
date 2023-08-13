@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../api/api";
 
-const getPosts = createAsyncThunk("post/getPosts", async () => {
+export const getPosts = createAsyncThunk("post/getPosts", async () => {
   try {
     const res = await fetch(`${BASE_URL}/posts`);
     const data = await res.json();

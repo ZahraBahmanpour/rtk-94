@@ -6,20 +6,27 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import PostList from "./features/posts/postList";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <PostList />,
+      },
+    ],
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <RouterProvider router={router}>
         <App />
-      </Provider>
-    </RouterProvider>
+      </RouterProvider>
+    </Provider>
   </React.StrictMode>
 );
