@@ -17,6 +17,10 @@ const router = createBrowserRouter([
         index: true,
         element: <PostList />,
       },
+      {
+        path: "/post",
+        element: <div>Post new</div>,
+      },
     ],
   },
 ]);

@@ -12,13 +12,14 @@ const PostList = () => {
   //   dispatch(getPosts());
   // }, []);
 
-  const { data: posts, isLoading } = useGetPostsQuery();
+  const { data: posts, isLoading, refetch } = useGetPostsQuery();
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
     <section>
       {isOpen && <div>Modal</div>}
+      <button onClick={() => refetch()}>refresh</button>
       {posts.map((post) => {
         return <PostItem key={post.id} {...post} />;
       })}
