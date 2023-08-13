@@ -6,6 +6,7 @@ import { getPosts } from "./postSlice";
 const PostList = () => {
   const dispatch = useDispatch();
   const { isLoading, posts } = useSelector((store) => store.posts);
+  const { isOpen } = useSelector((store) => store.modal);
   useEffect(() => {
     dispatch(getPosts());
   }, []);
@@ -15,6 +16,7 @@ const PostList = () => {
   }
   return (
     <section>
+      {isOpen && <div>Modal</div>}
       {posts.map((post) => {
         return <PostItem key={post.id} {...post} />;
       })}
