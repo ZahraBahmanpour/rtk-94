@@ -23,8 +23,22 @@ const postsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Post"],
     }),
+    updatePost: builder.mutation({
+      query: (post) => {
+        return {
+          url: `/posts/${post.id}`,
+          method: "PUT",
+          body: post,
+        };
+      },
+      invalidatesTags: ["Post"],
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useDeletePostMutation, useGetPostQuery } =
-  postsApiSlice;
+export const {
+  useGetPostsQuery,
+  useDeletePostMutation,
+  useGetPostQuery,
+  useUpdatePostMutation,
+} = postsApiSlice;
