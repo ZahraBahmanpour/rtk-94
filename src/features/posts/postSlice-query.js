@@ -9,6 +9,7 @@ const postsApiSlice = apiSlice.injectEndpoints({
           return { ...post, date: new Date(post.date).toDateString() };
         });
       },
+      providesTags: ["Post"],
     }),
     deletePost: builder.mutation({
       query: ({ id }) => ({
@@ -16,6 +17,7 @@ const postsApiSlice = apiSlice.injectEndpoints({
         method: "DELETE",
         body: { id },
       }),
+      invalidatesTags: ["Post"],
     }),
   }),
 });
