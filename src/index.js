@@ -9,6 +9,7 @@ import store from "./app/store";
 import PostList from "./features/posts/postList";
 import PostEdit from "./features/posts/postEdit";
 import RequireAuth from "./features/auth/requireAuth";
+import Login from "./features/auth/Login";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <RequireAuth />,
+        element: (
+          <RequireAuth>
+            <PostList />
+          </RequireAuth>
+        ),
       },
       {
         path: "/post",
@@ -28,6 +33,10 @@ const router = createBrowserRouter([
         element: <PostEdit />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
