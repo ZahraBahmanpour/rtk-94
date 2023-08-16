@@ -6,12 +6,12 @@ const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   credentials: "same-origin",
   prepareHeaders: (headers, { getState, endpoint }) => {
-    let token = localStorage.getItem("token") || "";
+    let token = localStorage.getItem("token");
     if (endpoint === "/auth/refresh-token") {
-      token = localStorage.getItem("refreshToken") || "";
-      headers.set("refreshToken", token);
+      token = localStorage.getItem("refreshToken");
+      headers.set("refreshToken", token || "");
     } else if (endpoint !== "/auth/login") {
-      headers.set("token", token);
+      headers.set("token", token || "");
     }
 
     return headers;

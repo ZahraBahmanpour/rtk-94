@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { redirect } from "react-router-dom";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -11,7 +12,6 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (state, action) => {
       const { refreshToken, accessToken } = action.payload;
-      console.log(accessToken, refreshToken);
       state.token = accessToken;
       localStorage.setItem("token", accessToken);
       state.refreshToken = refreshToken;
